@@ -1,0 +1,31 @@
+@import "../../styles/variables";
+
+.Input {
+  width: 100%;
+  background-color: $black-80;
+  padding: 10px 0 10px 15px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+
+  &.error,
+  &:invalid {
+    color: $error;
+    border: 1px solid $error;
+  }
+
+  &:disabled, &[disabled] {
+    color: $grey;
+    border: 1px solid $grey;
+  }
+
+  &:focus {
+    color: $white;
+  }
+
+  &::-webkit-input-placeholder,
+  &:-moz-placeholder,
+  &::-moz-placeholder,
+  &:-ms-input-placeholder {
+    color: $white-40;
+  }
+}

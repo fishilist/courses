@@ -1,0 +1,40 @@
+$maxWidth: 1280;
+$maxWidthContainer: 1280;
+
+$black: #121111;
+$black-80: rgba(18, 17, 17, 0.8);
+$black-50: rgba(18, 17, 17, 0.5);
+$grey: #6f6f6f;
+$white: #ffffff;
+$white-80: rgba(255, 255, 255, 0.8);
+$white-40: rgba(255, 255, 255, 0.4);
+$white-30: rgba(255, 255, 255, 0.3);
+$green: #38d900;
+$dark-blue: #32719c;
+$light-blue: #35adff;
+$orange: #FF8940;
+$error: #FF3A44;
+
+
+$mainColor: #292929;
+$mainColorHover: $black;
+$mainColorText: $white;
+
+$icomoon-font-family: "test-icons" !default;
+$icomoon-font-path: "../fonts" !default;
+
+$icon-arrow: "\e901";
+$icon-calendar: "\e900";
+$icon-checked: "\e902";
+$icon-download: "\e905";
+$icon-facebook: "\e907";
+$icon-file: "\e908";
+$icon-github: "\e909";
+$icon-home: "\e90b";
+$icon-journal: "\e90c";
+$icon-man: "\e90f";
+$icon-people: "\e912";
+$icon-search: "\e915";
+$icon-team: "\e916";
+$icon-twitter: "\e917";
+$icon-youtube: "\e919";

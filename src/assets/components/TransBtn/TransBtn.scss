@@ -1,0 +1,33 @@
+@import "../../styles/variables";
+
+.Transparent-button {
+  padding: 20px 80px;
+  color: $white;
+  border: 1px solid $light-blue;
+  transition: all 0.3s ease;
+
+  &:active {
+    background-color: $dark-blue;
+    color: $black;
+    box-shadow: inset 0 0 10px $black;
+    border: 1px solid transparent;
+  }
+
+  &:disabled {
+    background-color: $grey;
+    color: $grey;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      border: 1px solid transparent;
+      color: $black;
+      background-color: $orange;
+
+      &:active {
+        background-color: $dark-blue;
+        color: $black;
+      }
+    }
+  }
+}
