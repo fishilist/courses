@@ -1,7 +1,7 @@
 import './Header.scss'
 import Input from "../assets/components/Input/Input.jsx";
 import Files from "./Files/Files.jsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 const files = [
     {
@@ -82,6 +82,19 @@ const files = [
 ]
 
 function Header() {
+    const config = {
+        classList: 'files-list',
+        classItem: 'files__item',
+        classFile: 'file',
+        classFolder: 'folder',
+        classActive: 'active',
+        classText: 'files__item_title',
+        classFileWrapper: 'file-wrapper',
+        classTitle: 'files__item_title',
+        marginLeft: 20,
+        isClosedFiles: false,
+        alwaysOpenFile: true,
+    }
     let searchInit = 'Search'
     let [search, setSearch] = useState('');
 
@@ -132,7 +145,7 @@ function Header() {
                 <div className="project-nav__header h3 bold">
                     <p className={'icon-home'}><span>src</span></p>
                 </div>
-                <Files files={files} search={search}/>
+                <Files files={files} search={search} config={config}/>
             </div>
         </nav>
         <div className="header__bottom bottom-header">
