@@ -10,6 +10,8 @@ function Files({files, search, config}) {
     let [copyFiles, setCopyFiles] = useState([])
     let [activeFile, setActiveFile] = useState();
 
+
+    // Search logic ====================================================================================================
     // Filter files and directories by the search line
     useEffect(() => {
         setClass(config.classActive, false, getCurrentLists(), getCurrentItems())
@@ -19,8 +21,6 @@ function Files({files, search, config}) {
             setCopyFiles(files)
         }
     }, [search])
-
-    // Search logic ====================================================================================================
     // Filter, set active items and open parent folders
     function searchFiles(files, search) {
         let filteredTree = filterBySearch(files, search.toLowerCase())
@@ -218,11 +218,11 @@ function Files({files, search, config}) {
     }
 
     // Return a new tree if the file has children
-    function checkChildren(file, deep) {
+    function checkChildren(file) {
         if (file.children.length > 0) {
             return (
-                <ul className={config.classList} style={{marginLeft: config.marginLeft * deep + 'px'}}>
-                    {createTree(file.children, deep + 1)}
+                <ul className={config.classList} style={{marginLeft: config.marginLeft + 'px'}}>
+                    {createTree(file.children)}
                 </ul>)
         } else {
             return <></>
@@ -230,7 +230,7 @@ function Files({files, search, config}) {
     }
 
     // This function is recursion
-    function createTree(files, deep = 1) {
+    function createTree(files) {
         if (files.length === 0) return <li className={`${config.classItem} h3`}>Doesn't have any files</li>
         return files.map((item) => {
             switch (item.type) {
@@ -241,7 +241,7 @@ function Files({files, search, config}) {
                     return (
                         <React.Fragment key={item.id}>
                             <FolderItem item={item} config={config} callbackClick={clickDirHandler}/>
-                            {checkChildren(item, deep)}
+                            {checkChildren(item)}
                         </React.Fragment>)
                 }
                 default: {

@@ -43,13 +43,61 @@ const files = [
                 children: [
                     {
                         id: 7,
-                        title: 'MISTAKE!!',
-                        type: 'someThing',
-                        children: [],
-                        fullName: 'MISTAKE!!',
+                        title: 'Folder...',
+                        type: 'folder',
+                        children: [
+                            {
+                                id: 8,
+                                title: 'styles',
+                                type: 'folder',
+                                children: [
+                                    {
+                                        id: 9,
+                                        title: 'server',
+                                        type: 'folder',
+                                        children: []
+                                    },
+                                    {
+                                        id: 10,
+                                        title: 'components',
+                                        type: 'folder',
+                                        children: [
+                                            {
+                                                id: 11,
+                                                title: 'index',
+                                                type: 'file',
+                                                extension: 'html',
+                                                fullName: 'index.html',
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                id: 12,
+                                title: 'alternative',
+                                type: 'folder',
+                                children: [
+                                    {
+                                        id: 13,
+                                        title: 'MISTAKE!!',
+                                        type: 'someThing',
+                                        children: [],
+                                        fullName: 'MISTAKE!!',
+                                    },
+                                    {
+                                        id: 14,
+                                        title: 'TypeScript',
+                                        type: 'file',
+                                        extension: 'html',
+                                        fullName: 'TypeScript.ts',
+                                    }
+                                ]
+                            }
+                        ],
                     },
                     {
-                        id: 8,
+                        id: 15,
                         title: 'TypeScript',
                         type: 'file',
                         extension: 'html',
@@ -60,20 +108,20 @@ const files = [
         ]
     },
     {
-        id: 9,
+        id: 16,
         title: 'SQL',
         type: 'folder',
         children: []
     },
     {
-        id: 10,
+        id: 17,
         title: 'Wrong))',
         type: 'someThing',
         children: [],
         fullName: 'Wrong))',
     },
     {
-        id: 11,
+        id: 18,
         title: 'script',
         type: 'file',
         extension: 'js',
