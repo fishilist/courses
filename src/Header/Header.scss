@@ -1,16 +1,135 @@
 @import "../assets/styles/variables";
 
 .header {
-  position: fixed;
-  left: 0;
+  position: absolute;
+  z-index: 1;
+  right: 100%;
   top: 0;
+  left: 0;
+  height: 100vh;
+  display: inline-block;
+  min-width: 320px;
+  max-width: 90vw;
+  background-color: $white-40;
+  backdrop-filter: blur(15px);
+  transform: translate(-100%, 0);
+  transition: transform 0.3s ease;
+  .header-resizable {
+    opacity: 0;
+    visibility: hidden;
+  }
+  &.active {
+    position: relative;
+    transform: translate(0, 0);
+    .header-resizable {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.header-menu {
+  position: absolute;
+  z-index: 1;
+  left: calc(100% + 10px);
+  top: 20px;
+  display: block;
+  width: 37px;
+  height: 22px;
+  span {
+    display: block;
+    height: 2px;
+    background-color: $black;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    transition: all 0.3s ease;
+  }
+  span:first-child {
+    width: 100%;
+    top: 0;
+  }
+  span:nth-child(2) {
+    width: 100%;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+  span:last-child {
+    width: 60%;
+    bottom: 0;
+  }
+  &.active {
+    span:first-child {
+      width: 100%;
+      top: 50%;
+      transform: translate(0%, -50%) rotate(-45deg);
+    }
+    span:nth-child(2) {
+      opacity: 0;
+    }
+    span:last-child {
+      width: 100%;
+      top: 50%;
+      transform: translate(0%, -50%) rotate(45deg);
+    }
+  }
+  @media (hover: hover) {
+      &:hover {
+          cursor: pointer;
+      }
+  }
+}
+
+.header__body {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  min-width: 320px;
-  padding: 20px;
+  height: 100%;
   overflow-y: scroll;
-  background-color: $white-40;
+  padding: 20px;
+
+  /*scrollbar-width: none; !* firefox *!
+  &::-webkit-scrollbar { !* webkit *!
+    width: 0;
+    height: 0;
+  }*/
+
+  scrollbar-color: $black-50 $white-30; /* «цвет ползунка» «цвет полосы скроллбара» */
+  scrollbar-width: 7px; /* толщина */
+
+  /* полоса прокрутки (скроллбар) */
+  &::-webkit-scrollbar {
+    width: 7px; /* ширина для вертикального скролла */
+    height: 8px; /* высота для горизонтального скролла */
+    background-color: $white-30;
+  }
+
+  /* ползунок скроллбара */
+  &::-webkit-scrollbar-thumb {
+    background-color: $black-50;
+    border-radius: 5px;
+  }
+}
+
+.header-resizable {
+  position: absolute;
+  z-index: 1;
+  left: 100%;
+  top: 50%;
+  transform: translate(0%, -50%);
+  display: inline-block;
+  padding: 8px 8px 8px 0;
+}
+
+.header-resizable__item {
+  display: block;
+  width: 14px;
+  height: 28px;
+  background: url("./img/resizable-icon.png") no-repeat center center / contain;
+  @media (hover: hover) {
+      &:hover {
+          cursor: e-resize;
+      }
+  }
 }
 
 .person-header {
@@ -26,6 +145,7 @@
   height: 60px;
   display: block;
   margin-right: 20px;
+  flex-shrink: 0;
 
   img {
     position: absolute;
@@ -47,6 +167,8 @@
 
 .person-header__info_name {
   margin-bottom: 8px;
+  max-width: 250px;
+  white-space: normal;
 }
 
 .person-header__info_role {
@@ -91,9 +213,9 @@
   color: $black;
   @media (hover: hover) {
     transition: all 0.3s ease;
-      &:hover {
-        color: $orange;
-      }
+    &:hover {
+      color: $orange;
+    }
   }
 }
 
@@ -123,6 +245,7 @@
   display: flex;
   flex-direction: column;
 }
+
 .project-nav__header {
   position: relative;
   display: flex;
@@ -130,6 +253,7 @@
   color: $black;
   padding-bottom: 10px;
   margin-bottom: 20px;
+
   &:before {
     content: '';
     position: absolute;
@@ -141,6 +265,7 @@
     background-color: $black;
     display: block;
   }
+
   span {
     margin-left: 10px;
   }

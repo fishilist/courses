@@ -42,6 +42,7 @@
 .icon-checked {
   &:before {
     content: $icon-checked;
+    color: $green;
   }
 }
 

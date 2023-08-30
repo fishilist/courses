@@ -1,7 +1,7 @@
 import './Header.scss'
-import Input from "../assets/components/Input/Input.jsx";
+import "../assets/components/Input/Input.scss";
 import Files from "./Files/Files.jsx";
-import {useEffect, useState} from "react";
+import {useCallback, useRef, useState} from "react";
 
 const files = [
     {
@@ -145,6 +145,8 @@ function Header() {
     }
     let searchInit = 'Search'
     let [search, setSearch] = useState('');
+    const header = useRef()
+    const headerResizable = useRef()
 
     function blurHandler(event) {
         const input = event.target
@@ -164,47 +166,101 @@ function Header() {
         setSearch(event.target.value)
     }
 
-    return <header className="header">
-        <div className="header__person person-header">
-            <div className="person-header__img">
-                <img src="./img/жаба.jpg" alt=""/>
+    function mouseDownHandler() {
+        document.addEventListener('mousemove', onMouseMove);
+
+        document.onmouseup = function onMouseUp() {
+            document.removeEventListener('mousemove', onMouseMove)
+            document.onmouseup = null
+        }
+    }
+
+    function touchDownHandler() {
+        document.addEventListener('touchmove', onTouchMove);
+
+        document.ontouchend = () => {
+            document.removeEventListener('touchmove', onTouchMove)
+            document.ontouchend = null
+        };
+    }
+
+    function clickMenuIconHandler(event) {
+        event.currentTarget.classList.toggle('active')
+        header.current.classList.toggle('active')
+    }
+
+    const onMouseMove = useCallback(event => {
+        if (!header.current) return
+        let headerStyle = header.current.style
+
+        if (event.pageX < 320) {
+            //headerStyle.width = '320px'
+            return;
+        }
+        headerStyle.width = event.pageX + 'px'
+    }, [])
+
+    const onTouchMove = useCallback(event => {
+        if (!header.current) return
+        let headerStyle = header.current.style
+
+        if (event.touches[0].pageX < 320) {
+            //headerStyle.width = '320px'
+            return;
+        }
+        headerStyle.width = event.touches[0].pageX + 'px'
+    }, [])
+
+    return <header ref={header} className="header active">
+        <div className="header__body">
+            <div className="header__person person-header">
+                <div className="person-header__img">
+                    <img src="./img/жаба.jpg" alt=""/>
+                </div>
+                <div className="person-header__info">
+                    <div className="person-header__info_name h4">
+                        <p>John Bitterness</p>
+                    </div>
+                    <div className="person-header__info_role h5">
+                        <p>Role: <span>admin</span></p>
+                    </div>
+                </div>
             </div>
-            <div className="person-header__info">
-                <div className="person-header__info_name h4">
-                    <p>John Bigternev</p>
+            <nav className="header__nav navigation">
+                {/*<div className="files__item"></div>*/}
+                <div className="navigation__search">
+                    <input type='text'
+                           onBlur={blurHandler}
+                           onFocus={clickHandler}
+                           onChange={changeHandler}
+                           placeholder={searchInit}
+                           className={'Input h4'}/>
+                    <div className="navigation__search_icon icon-search"></div>
                 </div>
-                <div className="person-header__info_role h5">
-                    <p>Role: <span>admin</span></p>
+                <div className="navigation__project project-nav">
+                    <div className="project-nav__header h3 bold">
+                        <p className={'icon-home'}><span>src</span></p>
+                    </div>
+                    <Files files={files} search={search} config={config}/>
                 </div>
+            </nav>
+            <div className="header__bottom bottom-header">
+                <ul className="bottom-header__list">
+                    <li className="bottom-header__item">
+                        <a href="" className="bottom-header__link icon-man"></a>
+                    </li>
+                    <li className="bottom-header__item">
+                        <a href="" className="bottom-header__link icon-journal"></a>
+                    </li>
+                </ul>
             </div>
         </div>
-        <nav className="header__nav navigation">
-            <div className="files__item"></div>
-            <div className="navigation__search">
-                <input type='text'
-                       onBlur={blurHandler}
-                       onFocus={clickHandler}
-                       onChange={changeHandler}
-                       placeholder={searchInit}
-                       className={'Input h4'}/>
-                <div className="navigation__search_icon icon-search"></div>
-            </div>
-            <div className="navigation__project project-nav">
-                <div className="project-nav__header h3 bold">
-                    <p className={'icon-home'}><span>src</span></p>
-                </div>
-                <Files files={files} search={search} config={config}/>
-            </div>
-        </nav>
-        <div className="header__bottom bottom-header">
-            <ul className="bottom-header__list">
-                <li className="bottom-header__item">
-                    <a href="" className="bottom-header__link icon-man"></a>
-                </li>
-                <li className="bottom-header__item">
-                    <a href="" className="bottom-header__link icon-journal"></a>
-                </li>
-            </ul>
+        <div className="header-menu active" onClick={clickMenuIconHandler}>
+            <span></span><span></span><span></span>
+        </div>
+        <div className="header-resizable">
+            <div ref={headerResizable} onTouchStart={touchDownHandler} onMouseDown={mouseDownHandler}
+                 className="header-resizable__item"></div>
         </div>
     </header>
 }
