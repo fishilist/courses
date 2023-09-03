@@ -6,6 +6,7 @@
   background-color: $green;
   border: 1px solid transparent;
   transition: all 0.3s ease;
+  white-space: nowrap;
 
   /*&:focus {
     border: 1px solid $orange;

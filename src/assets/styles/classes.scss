@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+@import "variables";
 
 .h1 {
   font-family: Open Sans, serif;
@@ -13,7 +14,7 @@
 .h3 {
   font-family: Open Sans, serif;
   font-size: 24px;
-  line-height: 100%;
+  line-height: 120%;
 }
 .h4 {
   font-family: Open Sans, serif;
@@ -33,4 +34,12 @@
 }
 .light {
   font-weight: 300;
+}
+
+.green {
+  color: $green;
+}
+
+.black {
+  color: $black;
 }

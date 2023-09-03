@@ -2,6 +2,8 @@ import './Header.scss'
 import "../assets/components/Input/Input.scss";
 import Files from "./Files/Files.jsx";
 import {useCallback, useRef, useState} from "react";
+import Menu from "./Menu/Menu.jsx";
+import Import from "./Import/Import.jsx";
 
 const files = [
     {
@@ -237,11 +239,14 @@ function Header() {
                            className={'Input h4'}/>
                     <div className="navigation__search_icon icon-search"></div>
                 </div>
+
                 <div className="navigation__project project-nav">
                     <div className="project-nav__header h3 bold">
                         <p className={'icon-home'}><span>src</span></p>
                     </div>
-                    <Files files={files} search={search} config={config}/>
+                    {/*<Files files={files} search={search} config={config}/>*/}
+                    {/*<Menu/>*/}
+                    <Import/>
                 </div>
             </nav>
             <div className="header__bottom bottom-header">

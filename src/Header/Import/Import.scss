@@ -1,0 +1,22 @@
+.import-header {
+  position: relative;
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.import-header_dir {
+  width: 80%;
+  height: auto;
+}
+.import-header_arrow {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  width: 60px;
+  height: auto;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
