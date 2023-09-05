@@ -1,9 +1,9 @@
 import './Sidebar.scss'
 import "../../assets/components/Input/Input.scss";
-import Files from "../../Header/Files/Files.jsx";
+import Files from "../SidebarCourse/Files/Files.jsx";
 import {useCallback, useRef, useState} from "react";
 import Menu from "../SidebarStart/Menu/Menu.jsx";
-import Import from "../../Header/Import/Import.jsx";
+import Import from "../SidebarCourse/Import/Import.jsx";
 import {Link, Outlet} from "react-router-dom";
 
 const files = [

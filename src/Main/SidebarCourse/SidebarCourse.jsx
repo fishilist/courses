@@ -1,6 +1,6 @@
 import './SidebarCourse.scss'
-import Import from "../../Header/Import/Import.jsx";
-import Files from "../../Header/Files/Files.jsx";
+import Import from "./Import/Import.jsx";
+import Files from "./Files/Files.jsx";
 
 const files = [
     {

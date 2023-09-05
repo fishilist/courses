@@ -1,0 +1,111 @@
+@import "../../assets/styles/variables";
+
+.email-newsletter {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 100px 10% 50px 10%;
+  backdrop-filter: blur(2px);
+  overflow-y: auto;
+}
+
+.email-newsletter__option {
+  margin-bottom: 30px;
+}
+
+.email-newsletter__option_item {
+  &:not(:last-child) {
+    margin-bottom: 15px;
+  }
+}
+
+.email-newsletter__option_label {
+  display: inline-flex;
+  align-items: center;
+}
+
+.email-newsletter__option_input {
+  margin-right: 20px;
+}
+
+
+.email-newsletter__cover {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  visibility: hidden;
+  display: block;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: $black-80;
+  transition: all 0.1s ease;
+  &.active {
+    z-index: 1;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.select-role {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  min-width: 455px;
+}
+
+
+.select-role_icon {
+  position: absolute;
+  z-index: 1;
+  right: 25px;
+  top: 50%;
+  width: 16px;
+  height: 8px;
+  transform: translate(0, -50%);
+}
+
+.select-role__title {
+  position: relative;
+  display: inline-block;
+  padding: 15px 50px 15px 25px;
+  transition: background-color 0.3s ease;
+  img {
+    transition: transform 0.3s ease;
+  }
+  &.active {
+    background-color: $white-80;
+    img {
+      transform: rotate(180deg) translateY(50%);
+    }
+  }
+}
+
+.select-role__list {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: fit-content;
+  top: 100%;
+  left: 0;
+  padding-bottom: 5px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.select-role__item {
+  padding: 12px 0 12px 83px;
+  background-color: $white-80;
+  &:nth-child(2n + 1) {
+    background-color: $white-60;
+  }
+}
