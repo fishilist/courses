@@ -2,6 +2,7 @@ import './Login.scss'
 import TransBtn from "../../assets/components/TransBtn/TransBtn.jsx";
 import Input from "../../assets/components/Input/Input.jsx";
 import {useState} from "react";
+import {Link} from "react-router-dom";
 
 function Login(props) {
     let [isHidePass, setIsHidePass] = useState(true);
@@ -18,7 +19,7 @@ function Login(props) {
     }
 
     function handleSubmit(event) {
-        event.preventDefault();
+        //event.preventDefault();
         // Read the form data
         const form = event.target;
         const elements = form.elements;
@@ -67,7 +68,7 @@ function Login(props) {
         </div>
         <button name={'send'} type={"submit"} className={'Transparent-button h2'}>Войти</button>
         <div className="login__node h5 semibold">
-            <h5>Еще нет аккаунта? <a href="" className={'login__node_link green'}>Зарегистрироваться</a></h5>
+            <h5>Еще нет аккаунта? <Link to="../registration" className={'login__node_link green'}>Зарегистрироваться</Link></h5>
         </div>
     </form>
 }

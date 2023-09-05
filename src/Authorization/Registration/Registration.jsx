@@ -2,6 +2,7 @@ import './Registration.scss'
 import Input from "../../assets/components/Input/Input.jsx";
 import TransBtn from "../../assets/components/TransBtn/TransBtn.jsx";
 import {useRef, useState} from "react";
+import {Link} from "react-router-dom";
 
 function Registration(props) {
     let [isHidePass, setIsHidePass] = useState(true);
@@ -22,7 +23,7 @@ function Registration(props) {
     }
 
     function handleSubmit(event) {
-        event.preventDefault();
+        //event.preventDefault();
         // Read the form data
         const form = event.target;
         const elements = form.elements;
@@ -57,6 +58,10 @@ function Registration(props) {
         event.currentTarget.classList.remove('error')
     }
 
+    localStorage.setItem('user', JSON.stringify({
+        isAuth: true,
+    }));
+
     return <form method="post" onSubmit={handleSubmit} className="registration">
         <div className="registration__input" onClick={inputClickHandler}>
             <Input placeholder={'Email'} type={'text'} name={'email'}/>
@@ -83,7 +88,7 @@ function Registration(props) {
         </div>
         <button name={'send'} type={"submit"} className={'Transparent-button h2'}>Зарегистрироваться</button>
         <div className="registration__node h5 semibold">
-            <h5>Уже есть аккаунт? <a href="" className={'registration__node_link green'}>Войти</a></h5>
+            <h5>Уже есть аккаунт? <Link to="../login" className={'registration__node_link green'}>Войти</Link></h5>
         </div>
     </form>
 }

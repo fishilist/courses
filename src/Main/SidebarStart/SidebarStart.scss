@@ -1,0 +1,44 @@
+@import "../../assets/styles/variables";
+
+.header__nav {
+  flex: 1 1 auto;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+}
+
+.navigation__project {
+}
+
+.project-nav {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.bottom-header {
+  padding: 10px 0 0 0;
+  border-top: 1px solid $black;
+}
+
+.bottom-header__list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bottom-header__item {
+}
+
+.bottom-header__link {
+  font-size: 30px;
+  color: $black;
+  @media (hover: hover) {
+    transition: all 0.3s ease;
+    &:hover {
+      color: $orange;
+    }
+  }
+}

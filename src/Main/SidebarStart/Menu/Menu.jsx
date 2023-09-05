@@ -1,6 +1,7 @@
-import '../../assets/styles/icon-font.scss'
+import '../../../assets/styles/icon-font.scss'
 import './Menu.scss'
 import {useRef, useState} from "react";
+import {Link} from "react-router-dom";
 
 function Menu(props) {
     let categories = useRef();
@@ -43,25 +44,25 @@ function Menu(props) {
                 </h5>
                 <ul className="category__item_courses category-inner-list courses-list">
                     <li className="courses-list__item item-category" onClick={clickItemHandler}>
-                        <a href={''} className={'courses-list__title h5 light'}><span className={'icon-people'}></span>JavaScript</a>
+                        <Link to={'course'} className={'courses-list__title h5 light'}><span className={'icon-people'}></span>JavaScript</Link>
                     </li>
                     <li className="courses-list__item item-category" onClick={clickItemHandler}>
-                        <a href={''} className={'courses-list__title h5 light'}><span className={'icon-people'}></span>C++</a>
+                        <Link to={'course'} className={'courses-list__title h5 light'}><span className={'icon-people'}></span>C++</Link>
                     </li>
                     <li className="courses-list__item item-category" onClick={clickItemHandler}>
-                        <a href={''} className={'courses-list__title h5 light'}><span className={'icon-people'}></span>Python</a>
+                        <Link to={'course'} className={'courses-list__title h5 light'}><span className={'icon-people'}></span>Python</Link>
                     </li>
                 </ul>
             </li>
             <li onClick={clickCategoryHandler} className="category__item">
-                <h5 className={'category__item_title h5 bold'}>
+                <Link to={'roles'} className={'category__item_title h5 bold'}>
                     <span className={'icon-calendar'}></span>Roles
-                </h5>
+                </Link>
             </li>
             <li onClick={clickCategoryHandler} className="category__item">
-                <h5 className={'category__item_title h5 bold'}>
+                <Link to={'mailing'} className={'category__item_title h5 bold'}>
                     <span className={'icon-calendar'}></span>Email newsletter
-                </h5>
+                </Link>
             </li>
         </ul>
     </div>

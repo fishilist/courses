@@ -2,15 +2,16 @@ import './Authorization.scss'
 import '../assets/styles/icon-font.scss'
 import Login from "./Login/Login.jsx";
 import Registration from "./Registration/Registration.jsx";
+import {Outlet} from "react-router-dom";
 
 function Authorization(props) {
+    let pathImg = '../../public/img/';
     return <div className={'Authorization auth'}>
         <div className="auth__icon">
-            <img src="./img/person.png" alt="" className="auth__icon_img"/>
+            <img src={pathImg + "person.png"} alt="авторизация" className="auth__icon_img"/>
         </div>
         <div className="auth__body">
-            <Login/>
-            {/*<Registration/>*/}
+            <Outlet/>
         </div>
         <ul className="auth__socials">
             <li className="auth__socials_icon">

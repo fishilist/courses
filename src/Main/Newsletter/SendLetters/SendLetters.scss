@@ -1,0 +1,49 @@
+@import "../../../assets/styles/variables";
+
+.letters-send {
+  flex: 1 1 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  &.error {
+    .letters-send__filed_textarea {
+      border: 1px solid $error;
+    }
+    .letters-send__filed_note {
+      display: block;
+    }
+  }
+}
+
+.letters-send__filed {
+  margin-bottom: 10px;
+}
+
+.letters-send__filed_textarea {
+  width: 100%;
+  min-height: 250px;
+  resize: vertical;
+  padding: 25px;
+  background-color: $black-80;
+  border: 1px solid transparent;
+  transition: border 0.3s ease;
+  &:focus, &:focus-visible {
+    border: 1px solid $light-blue;
+    outline: none;
+  }
+}
+
+.letters-send__note {
+  margin-bottom: 35px;
+}
+
+.letters-send__button {
+  text-align: center;
+}
+
+.letters-send__filed_note {
+  display: none;
+  margin-bottom: 5px;
+  color: $error;
+}

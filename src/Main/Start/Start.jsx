@@ -1,7 +1,7 @@
-import './NoOneCourse.scss'
+import './Start.scss'
 import GreenBtn from "../../assets/components/GreenBtn/GreenBtn.jsx";
 
-function NoOneCourse(props) {
+function Start(props) {
     return <div className={'empty-courses'}>
         <div className="empty-courses__title h1 light">
             <p>У вас пока нет ни одного курса</p>
@@ -10,4 +10,4 @@ function NoOneCourse(props) {
     </div>
 }
 
-export default NoOneCourse;
+export default Start;

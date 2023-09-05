@@ -1,9 +1,10 @@
-import './Header.scss'
-import "../assets/components/Input/Input.scss";
-import Files from "./Files/Files.jsx";
+import './Sidebar.scss'
+import "../../assets/components/Input/Input.scss";
+import Files from "../../Header/Files/Files.jsx";
 import {useCallback, useRef, useState} from "react";
-import Menu from "./Menu/Menu.jsx";
-import Import from "./Import/Import.jsx";
+import Menu from "../SidebarStart/Menu/Menu.jsx";
+import Import from "../../Header/Import/Import.jsx";
+import {Link, Outlet} from "react-router-dom";
 
 const files = [
     {
@@ -130,21 +131,22 @@ const files = [
         fullName: 'script.js',
     }
 ]
+const config = {
+    classList: 'files-list',
+    classItem: 'files__item',
+    classFile: 'file',
+    classFolder: 'folder',
+    classActive: 'active',
+    classText: 'files__item_title',
+    classFileWrapper: 'file-wrapper',
+    classTitle: 'files__item_title',
+    marginLeft: 20,
+    isClosedFiles: false,
+    alwaysOpenFile: true,
+}
 
-function Header() {
-    const config = {
-        classList: 'files-list',
-        classItem: 'files__item',
-        classFile: 'file',
-        classFolder: 'folder',
-        classActive: 'active',
-        classText: 'files__item_title',
-        classFileWrapper: 'file-wrapper',
-        classTitle: 'files__item_title',
-        marginLeft: 20,
-        isClosedFiles: false,
-        alwaysOpenFile: true,
-    }
+function Sidebar({component}) {
+    const pathImg = '../../public/img/';
     let searchInit = 'Search'
     let [search, setSearch] = useState('');
     const header = useRef()
@@ -217,7 +219,7 @@ function Header() {
         <div className="header__body">
             <div className="header__person person-header">
                 <div className="person-header__img">
-                    <img src="./img/жаба.jpg" alt=""/>
+                    <img src={pathImg + "жаба.jpg"} alt=""/>
                 </div>
                 <div className="person-header__info">
                     <div className="person-header__info_name h4">
@@ -228,37 +230,19 @@ function Header() {
                     </div>
                 </div>
             </div>
-            <nav className="header__nav navigation">
-                {/*<div className="files__item"></div>*/}
-                <div className="navigation__search">
-                    <input type='text'
-                           onBlur={blurHandler}
-                           onFocus={clickHandler}
-                           onChange={changeHandler}
-                           placeholder={searchInit}
-                           className={'Input h4'}/>
-                    <div className="navigation__search_icon icon-search"></div>
-                </div>
-
-                <div className="navigation__project project-nav">
-                    <div className="project-nav__header h3 bold">
-                        <p className={'icon-home'}><span>src</span></p>
-                    </div>
-                    {/*<Files files={files} search={search} config={config}/>*/}
-                    {/*<Menu/>*/}
-                    <Import/>
-                </div>
-            </nav>
-            <div className="header__bottom bottom-header">
-                <ul className="bottom-header__list">
-                    <li className="bottom-header__item">
-                        <a href="" className="bottom-header__link icon-man"></a>
-                    </li>
-                    <li className="bottom-header__item">
-                        <a href="" className="bottom-header__link icon-journal"></a>
-                    </li>
-                </ul>
+            <div className="navigation__search">
+                <input type='text'
+                       onBlur={blurHandler}
+                       onFocus={clickHandler}
+                       onChange={changeHandler}
+                       placeholder={searchInit}
+                       className={'Input h4'}/>
+                <div className="navigation__search_icon icon-search"></div>
             </div>
+            <div className="project-nav__header h3 bold">
+                <Link to={'start'} className={'icon-home'}><span>Home</span></Link>
+            </div>
+            {component}
         </div>
         <div className="header-menu active" onClick={clickMenuIconHandler}>
             <span></span><span></span><span></span>
@@ -270,4 +254,4 @@ function Header() {
     </header>
 }
 
-export default Header;
+export default Sidebar;
