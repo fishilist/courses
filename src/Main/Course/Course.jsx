@@ -1,5 +1,5 @@
 import './Course.scss'
-import CreateCourse from "./CreateCourse/CreateCourse.jsx";
+//import CreateCourse from "./CreateCourse/CreateCourse.jsx";
 
 function Course() {
     let hasCourse = false;
@@ -14,7 +14,8 @@ function Course() {
             <p>{title}</p>
         </div>
         <div className="page-create__body">
-            {hasCourse ? getCourse() : <CreateCourse/>}
+
+            {/*{hasCourse ? getCourse() : <CreateCourse/>}*/}
         </div>
     </div>
 }

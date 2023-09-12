@@ -8,6 +8,7 @@ import SidebarRoles from "./SidebarRoles/SidebarRoles.jsx";
 import SidebarJournal from "./SidebarJournal/SidebarJournal.jsx";
 import SidebarCourse from "./SidebarCourse/SidebarCourse.jsx";
 import SidebarTeam from "./SidebarTeam/SidebarTeam.jsx";
+import SidebarImport from "./SidebarImport/SidebarImport.jsx";
 
 function Main() {
     const navigate = useNavigate();
@@ -36,8 +37,10 @@ function Main() {
                 return <SidebarRoles/>
             case "/mailing":
                 return <SidebarMailing/>
+            case "/create/import":
+                return <SidebarImport/>
             default:
-                return <Sidebar/>
+                return <></>
         }
     }
 

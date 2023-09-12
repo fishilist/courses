@@ -17,7 +17,7 @@
   }
 
   &:not(:last-child) {
-    margin-bottom: 15px;
+    //margin-bottom: 15px;
   }
 
   &.active {
@@ -27,18 +27,23 @@
 
     & > .category-inner-list {
       display: block;
-      .item-category.active:before {
-        opacity: 1;
-      }
     }
   }
 }
 
 .category__item_title {
   position: relative;
-  color: $black;
   display: flex;
   align-items: center;
+  padding: 10px;
+  color: $black;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: $white-30;
+      cursor: pointer;
+    }
+  }
 
   &:before {
     content: '';
@@ -64,8 +69,15 @@
 }
 
 .courses-list__item {
+  padding: 10px;
+
   &:not(:last-child) {
-    margin-bottom: 20px;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: $black-50;
+    }
   }
 }
 
@@ -76,19 +88,4 @@
 }
 
 .item-category {
-  position: relative;
-
-  &:before {
-    content: '';
-    position: absolute;
-    z-index: 1;
-    display: block;
-    width: 2px;
-    background-color: $light-blue;
-    height: 100%;
-    right: 100%;
-    opacity: 0;
-    transform: translate(-5px, 0);
-    transition: opacity 0.14s ease;
-  }
 }

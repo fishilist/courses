@@ -1,7 +1,8 @@
 import './CreateCourse.scss'
 import GreenBtn from "../../../assets/components/GreenBtn/GreenBtn.jsx";
 
-function CreateCourse(props) {
+function CreateCourse() {
+    const pathImg = './img/';
     return <div className="CreateCourse course-create">
         <ul className="course-create__left course-list h4 light">
             <li className="course-list__item">
@@ -46,13 +47,13 @@ function CreateCourse(props) {
                     <h3>Файл-обложка</h3>
                 </div>
                 <div className="import-cover__rect">
-                    <img className="import-cover__rect_dir" src="./img/dir.png" alt=""/>
-                    <img className="import-cover__rect_loadIcon" src="./img/arrow.svg" alt=""/>
+                    <img className="import-cover__rect_dir" src={pathImg + "dir.png"} alt=""/>
+                    <img className="import-cover__rect_loadIcon" src={pathImg + "arrow.svg"} alt=""/>
                 </div>
             </div>
             <div className="course-create__cover">
                 <div className="course-create__cover_img">
-                    <img src="./img/обложка.jpg" alt=""/>
+                    <img src={pathImg + "обложка.jpg"} alt=""/>
                 </div>
                 <div className="course-create__cover_title h2 light">
                     <h3>Название курса</h3>
@@ -68,4 +69,4 @@ function CreateCourse(props) {
     </div>
 }
 
-export default CreateCourse;
+//export default CreateCourse;

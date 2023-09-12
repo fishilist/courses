@@ -14,9 +14,14 @@ import Roles from "./Main/Roles/Roles.jsx";
 import Journal from "./Main/Journal/Journal.jsx";
 import Course from "./Main/Course/Course.jsx";
 import Team from "./Main/Team/Team.jsx";
+import Creating from "./Main/Creating/Creating.jsx";
+import CreateTeam from "./Main/Creating/CreateTeam/CreateTeam.jsx";
+import CreateCourse from "./Main/Creating/CreateCourse/CreateCourse.jsx";
+import CreateJournal from "./Main/Creating/CreateJournal/CreateJournal.jsx";
+import ImportFile from "./Main/Creating/ImportFile/ImportFile.jsx";
 
 function App() {
-    const pathImg = '../public/img/'
+    const pathImg = './img/'
 
     return <div className={'App'}>
         <Routes>
@@ -27,6 +32,12 @@ function App() {
                 <Route path={'journal'} element={<Journal/>}/>
                 <Route path={'roles'} element={<Roles/>}/>
                 <Route path={'mailing'} element={<Mailing/>}/>
+                <Route path={'create'} element={<Creating/>}>
+                    <Route path={'team'} element={<CreateTeam/>}/>
+                    <Route path={'import'} element={<ImportFile/>}/>
+                    <Route path={'course'} element={<CreateCourse/>}/>
+                    <Route path={'journal'} element={<CreateJournal/>}/>
+                </Route>
             </Route>
             <Route path={'/authorization'} element={<Authorization/>}>
                 <Route path={'login'} element={<Login/>}/>

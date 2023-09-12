@@ -3,8 +3,11 @@ import './Files.scss'
 import FolderItem from "./FolderItem/FolderItem.jsx";
 import FileItem from "./FileItem/FileItem.jsx";
 import UnknownItem from "./UnknownItem/UnknownItem.jsx";
+import {useSelector} from "react-redux";
 
-function Files({files, search, config}) {
+function Files({config}) {
+    let search = useSelector(store => store.search.value);
+    let files = useSelector(store => store.files.files);
     const root = useRef();
 
     let [copyFiles, setCopyFiles] = useState([])

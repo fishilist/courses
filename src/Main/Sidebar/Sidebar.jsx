@@ -1,161 +1,21 @@
 import './Sidebar.scss'
 import "../../assets/components/Input/Input.scss";
-import Files from "../SidebarCourse/Files/Files.jsx";
-import {useCallback, useRef, useState} from "react";
-import Menu from "../SidebarStart/Menu/Menu.jsx";
-import Import from "../SidebarCourse/Import/Import.jsx";
-import {Link, Outlet} from "react-router-dom";
+import {useCallback, useRef} from "react";
+import {Link} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {setSearch} from "../../assets/store/searchReducer.js";
 
-const files = [
-    {
-        id: 1,
-        title: 'assets',
-        type: 'folder',
-        children: [
-            {
-                id: 2,
-                title: 'styles',
-                type: 'folder',
-                children: [
-                    {
-                        id: 3,
-                        title: 'server',
-                        type: 'folder',
-                        children: []
-                    },
-                    {
-                        id: 4,
-                        title: 'components',
-                        type: 'folder',
-                        children: [
-                            {
-                                id: 5,
-                                title: 'index',
-                                type: 'file',
-                                extension: 'html',
-                                fullName: 'index.html',
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                id: 6,
-                title: 'alternative',
-                type: 'folder',
-                children: [
-                    {
-                        id: 7,
-                        title: 'Folder...',
-                        type: 'folder',
-                        children: [
-                            {
-                                id: 8,
-                                title: 'styles',
-                                type: 'folder',
-                                children: [
-                                    {
-                                        id: 9,
-                                        title: 'server',
-                                        type: 'folder',
-                                        children: []
-                                    },
-                                    {
-                                        id: 10,
-                                        title: 'components',
-                                        type: 'folder',
-                                        children: [
-                                            {
-                                                id: 11,
-                                                title: 'index',
-                                                type: 'file',
-                                                extension: 'html',
-                                                fullName: 'index.html',
-                                            }
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                id: 12,
-                                title: 'alternative',
-                                type: 'folder',
-                                children: [
-                                    {
-                                        id: 13,
-                                        title: 'MISTAKE!!',
-                                        type: 'someThing',
-                                        children: [],
-                                        fullName: 'MISTAKE!!',
-                                    },
-                                    {
-                                        id: 14,
-                                        title: 'TypeScript',
-                                        type: 'file',
-                                        extension: 'html',
-                                        fullName: 'TypeScript.ts',
-                                    }
-                                ]
-                            }
-                        ],
-                    },
-                    {
-                        id: 15,
-                        title: 'TypeScript',
-                        type: 'file',
-                        extension: 'html',
-                        fullName: 'TypeScript.ts',
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        id: 16,
-        title: 'SQL',
-        type: 'folder',
-        children: []
-    },
-    {
-        id: 17,
-        title: 'Wrong))',
-        type: 'someThing',
-        children: [],
-        fullName: 'Wrong))',
-    },
-    {
-        id: 18,
-        title: 'script',
-        type: 'file',
-        extension: 'js',
-        fullName: 'script.js',
-    }
-]
-const config = {
-    classList: 'files-list',
-    classItem: 'files__item',
-    classFile: 'file',
-    classFolder: 'folder',
-    classActive: 'active',
-    classText: 'files__item_title',
-    classFileWrapper: 'file-wrapper',
-    classTitle: 'files__item_title',
-    marginLeft: 20,
-    isClosedFiles: false,
-    alwaysOpenFile: true,
-}
-
-function Sidebar({component}) {
+function Sidebar({component = <></>}) {
+    const dispatch = useDispatch();
     const pathImg = '../../public/img/';
-    let searchInit = 'Search'
-    let [search, setSearch] = useState('');
     const header = useRef()
     const headerResizable = useRef()
+    let searchPlaceholder = 'Search'
 
     function blurHandler(event) {
         const input = event.target
         if (input.value === '') {
-            input.placeholder = searchInit
+            input.placeholder = searchPlaceholder
         }
     }
 
@@ -167,7 +27,7 @@ function Sidebar({component}) {
     }
 
     function changeHandler(event) {
-        setSearch(event.target.value)
+        dispatch(setSearch(event.target.value))
     }
 
     function mouseDownHandler() {
@@ -198,7 +58,6 @@ function Sidebar({component}) {
         let headerStyle = header.current.style
 
         if (event.pageX < 320) {
-            //headerStyle.width = '320px'
             return;
         }
         headerStyle.width = event.pageX + 'px'
@@ -209,7 +68,6 @@ function Sidebar({component}) {
         let headerStyle = header.current.style
 
         if (event.touches[0].pageX < 320) {
-            //headerStyle.width = '320px'
             return;
         }
         headerStyle.width = event.touches[0].pageX + 'px'
@@ -235,7 +93,7 @@ function Sidebar({component}) {
                        onBlur={blurHandler}
                        onFocus={clickHandler}
                        onChange={changeHandler}
-                       placeholder={searchInit}
+                       placeholder={searchPlaceholder}
                        className={'Input h4'}/>
                 <div className="navigation__search_icon icon-search"></div>
             </div>
