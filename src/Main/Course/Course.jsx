@@ -15,7 +15,6 @@ function Course() {
         </div>
         <div className="page-create__body">
 
-            {/*{hasCourse ? getCourse() : <CreateCourse/>}*/}
         </div>
     </div>
 }
